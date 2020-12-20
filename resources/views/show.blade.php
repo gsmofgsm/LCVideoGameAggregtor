@@ -69,7 +69,7 @@
 
         <div class="images-containers border-b border-gray-800 pb-12 mt-8">
             <h2 class="font-semibold text-4xl">Images</h2>
-            <div class="grid grid-cols-3 gap-12 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
                 <div>
                     <a href="#">
                         <img src="/screenshot1.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
