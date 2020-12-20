@@ -171,7 +171,56 @@
                     </div>
                 </div>
             </div>
-            <div class="most-anticipated w-1/4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. </div>
+            <div class="most-anticipated w-1/4">
+                <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most Anticipated</h2>
+                <div class="most-anticipated-container space-y-10 mt-8">
+                    <div class="game flex">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Final Fantasy 7 Remake</a>
+                            <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        </div>
+                    </div>
+                    <div class="game flex">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Final Fantasy 7 Remake</a>
+                            <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        </div>
+                    </div>
+                    <div class="game flex">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Final Fantasy 7 Remake</a>
+                            <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        </div>
+                    </div>
+                    <div class="game flex">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Final Fantasy 7 Remake</a>
+                            <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        </div>
+                    </div>
+                    <div class="game flex">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Final Fantasy 7 Remake</a>
+                            <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div> <!-- end container -->
 @endsection
