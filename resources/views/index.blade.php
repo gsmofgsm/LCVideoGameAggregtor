@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto px-4">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Popular Games</h2>
-        <div class="popular-games text-sm grid grid-cols-6 gap-12 border-b border-gray-800 pb-16">
+        <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 border-b border-gray-800 pb-16">
             <div class="game mt-8">
                 <div class="relative inline-block">
                     <a href="#">
@@ -104,8 +104,8 @@
             </div>
         </div>
 
-        <div class="flex my-10">
-            <div class="recently-reviewed w-3/4 mr-32">
+        <div class="flex flex-col lg:flex:row my-10">
+            <div class="recently-reviewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Recently Reviewed</h2>
                 <div class="recently-reviewed-container space-y-12 mt-8">
                     <div class="game bg-gray-800 rounded-large shadow-md flex px-6 py-6">
@@ -122,7 +122,7 @@
                                 Final Fantasy 7 Remake
                             </a>
                             <div class="text-gray-400 mt-1">Playstation 4</div>
-                            <p class="mt-6 text-gray-400">
+                            <p class="mt-6 text-gray-400 hidden lg:block">
                                 In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
                             </p>
                         </div>
@@ -143,7 +143,7 @@
                                 Final Fantasy 7 Remake
                             </a>
                             <div class="text-gray-400 mt-1">Playstation 4</div>
-                            <p class="mt-6 text-gray-400">
+                            <p class="mt-6 text-gray-400 hidden lg:block">
                                 In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
                             </p>
                         </div>
@@ -164,14 +164,14 @@
                                 Final Fantasy 7 Remake
                             </a>
                             <div class="text-gray-400 mt-1">Playstation 4</div>
-                            <p class="mt-6 text-gray-400">
+                            <p class="mt-6 text-gray-400 hidden lg:block">
                                 In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="most-anticipated w-1/4">
+            <div class="most-anticipated lg:w-1/4 mt-12 lg:mt-0">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most Anticipated</h2>
                 <div class="most-anticipated-container space-y-10 mt-8">
                     <div class="game flex">
