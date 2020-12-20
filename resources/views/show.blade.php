@@ -65,6 +65,132 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> <!-- end game-details -->
+
+        <div class="images-containers border-b border-gray-800 pb-12 mt-8">
+            <h2 class="font-semibold text-4xl">Images</h2>
+            <div class="grid grid-cols-3 gap-12 mt-8">
+                <div>
+                    <a href="#">
+                        <img src="/screenshot1.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="/screenshot2.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="/screenshot3.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="/screenshot4.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="/screenshot5.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="/screenshot6.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end images-containers -->
+
+        <div class="similar-games-containers mt-8">
+            <h2 class="font-semibold text-4xl">Similar Games</h2>
+            <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+                <div class="game mt-8">
+                    <div class="relative inline-block">
+                        <a href="#">
+                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        Final Fantasy 7 Remake
+                    </a>
+                    <div class="text-gray-400 mt-1">Playstation 4</div>
+                </div>
+            </div>
+        </div> <!-- end similar-games-containers -->
     </div>
 @endsection
