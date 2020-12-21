@@ -15,34 +15,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $before = Carbon::now()->subMonths(2)->timestamp;
-        $after = Carbon::now()->addMonths(2)->timestamp;
-        $current = Carbon::now()->timestamp;
-        $afterFourMonths = Carbon::now()->addMonths(4)->timestamp;
-
-
-        $comingSoon = Http::withHeaders([
-            'Client-ID' => config('services.igdb.id'),
-            'Authorization' => 'Bearer ' . config('services.igdb.token')
-        ])->withBody(
-            "
-                fields name, cover.url, first_release_date, total_rating_count,
-                platforms.abbreviation, rating, rating_count, summary;
-                where platforms = (48,49,130,6)
-                & (first_release_date >= {$current}
-                );
-                sort first_release_date asc;
-                limit 4;
-                ", 'text/plain'
-        )->post('https://api.igdb.com/v4/games')->json();
-
-        dump($comingSoon);
-        return view('index', compact(
-//            'popularGames',
-//            'recentlyReviewed',
-//            'mostAnticipated',
-            'comingSoon'
-        ));
+        return view('index');
     }
 
     /**
