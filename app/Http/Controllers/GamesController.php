@@ -92,6 +92,18 @@ class GamesController extends Controller
                     'platforms' => isset($game['platforms']) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : null,
                 ]);
             })->take(6),
+            'social' => [
+                'website' => collect($game['websites'])->first(),
+                'facebook' => collect($game['websites'])->filter(function ($website) {
+                    return Str::contains($website['url'], 'facebook');
+                })->first(),
+                'twitter' => collect($game['websites'])->filter(function ($website) {
+                    return Str::contains($website['url'], 'twitter');
+                })->first(),
+                'instagram' => collect($game['websites'])->filter(function ($website) {
+                    return Str::contains($website['url'], 'instagram');
+                })->first(),
+            ]
         ]);
     }
 
