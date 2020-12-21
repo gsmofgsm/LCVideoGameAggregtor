@@ -15,7 +15,7 @@ class PopularGames extends Component
         $before = Carbon::now()->subMonths(2)->timestamp;
         $after = Carbon::now()->addMonths(2)->timestamp;
 
-        $popularGames = Http::withHeaders([
+        $this->popularGames = Http::withHeaders([
             'Client-ID' => config('services.igdb.id'),
             'Authorization' => 'Bearer ' . config('services.igdb.token')
         ])->withBody(
