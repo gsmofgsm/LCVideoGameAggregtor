@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'igdb' => [
+        'id' => env('TWITCH_ID'),
+        'key' => env('TWITCH_KEY'),
+        'token' => env('TWITCH_TOKEN'),
+    ]
 ];
