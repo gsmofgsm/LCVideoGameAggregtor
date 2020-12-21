@@ -4,28 +4,50 @@
     <div class="container mx-auto px-4">
         <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
             <div class="flex-none">
-                <img src="/ff7.jpg" alt="cover">
+                <img src="{{ isset($game['cover']) ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) : '/ff7.jpg' }}" alt="cover">
             </div>
             <div class="lg:ml-12 lg:mr-64">
-                <h2 class="font-semibold text-4xl leading-tight mt-1">Final Fantasy VII Remake</h2>
+                <h2 class="font-semibold text-4xl leading-tight mt-1">{{ $game['name'] }}</h2>
                 <div class="text-gray-400">
-                    <span>Adventur, RPG</span>
+                    <span>
+                        @foreach($game['genres'] as $genre)
+                            {{ $genre['name'] }},
+                        @endforeach
+                    </span>
                     &middot;
-                    <span>Square Enix</span>
+                    <span>{{ $game['involved_companies'][0]['company']['name'] }}</span>
                     &middot;
-                    <span>Playstation 4</span>
+                    <span>
+                        @foreach($game['platforms'] as $platform)
+                            @if(isset($platform['abbreviation']))
+                                {{ $platform['abbreviation'] }},
+                            @endif
+                        @endforeach
+                    </span>
                 </div>
 
                 <div class="flex flex-wrap items-center mt-8">
                     <div class="flex items-center">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">90%</div>
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                @if(isset($game['rating']))
+                                    {{ round($game['rating']) }}%
+                                @else
+                                    0%
+                                @endif
+                            </div>
                         </div>
                         <div class="ml-4 text-xs">Member <br> Score</div>
                     </div>
                     <div class="flex items-center ml-12">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">90%</div>
+                            <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                @if(isset($game['aggregated_rating']))
+                                    {{ round($game['aggregated_rating']) }}%
+                                @else
+                                    0%
+                                @endif
+                            </div>
                         </div>
                         <div class="ml-4 text-xs">Critic <br> Score</div>
                     </div>
@@ -55,14 +77,18 @@
                 </div>
 
                 <p class="mt-12">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                    {{ $game['summary'] }}
                 </p>
 
                 <div class="mt-12">
-                    <button class="flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+{{--                    <button class="flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">--}}
+{{--                        <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>--}}
+{{--                        <span class="ml-2">Play Trailer</span>--}}
+{{--                    </button>--}}
+                    <a href="https://youtube.com/watch/{{ $game['videos'][0]['video_id'] }}" class="inline-flex flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
                         <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
                         <span class="ml-2">Play Trailer</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div> <!-- end game-details -->
@@ -70,126 +96,48 @@
         <div class="images-containers border-b border-gray-800 pb-12 mt-8">
             <h2 class="font-semibold text-4xl">Images</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+                @foreach($game['screenshots'] as $screenshot)
                 <div>
-                    <a href="#">
-                        <img src="/screenshot1.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    <a href="{{ Str::replaceFirst('thumb', 'screenshot_huge', $screenshot['url']) }}">
+                        <img src="{{ Str::replaceFirst('thumb', 'screenshot_big', $screenshot['url']) }}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
                     </a>
                 </div>
-                <div>
-                    <a href="#">
-                        <img src="/screenshot2.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="/screenshot3.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="/screenshot4.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="/screenshot5.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="/screenshot6.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div> <!-- end images-containers -->
 
         <div class="similar-games-containers mt-8">
             <h2 class="font-semibold text-4xl">Similar Games</h2>
             <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                @foreach($game['similar_games'] as $sgame)
+                    <div class="game mt-8">
+                        <div class="relative inline-block">
+                            <a href="#">
+                                <img src="{{ Str::replaceFirst('thumb', 'cover_big', $sgame['cover']['url']) }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                            </a>
+
+                            @if(isset($sgame['rating']))
+                            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
+                                <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                        {{ round($sgame['rating']) }}%
+                                </div>
+                            </div>
+                            @endif
                         </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                            {{ $sgame['name'] }}
                         </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
+                        @if(isset($sgame['platforms']))
+                        <div class="text-gray-400 mt-1">
+                            @foreach($sgame['platforms'] as $platform)
+                                @if(isset($platform['abbreviation']))
+                                    {{ $platform['abbreviation'] }},
+                                @endif
+                            @endforeach
                         </div>
+                        @endif
                     </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
-                <div class="game mt-8">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="/ff7.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        Final Fantasy 7 Remake
-                    </a>
-                    <div class="text-gray-400 mt-1">Playstation 4</div>
-                </div>
+                @endforeach
             </div>
         </div> <!-- end similar-games-containers -->
     </div>
