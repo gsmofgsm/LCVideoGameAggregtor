@@ -53,13 +53,19 @@ class GamesController extends Controller
             'Authorization' => 'Bearer ' . config('services.igdb.token')
         ])->withBody(
             "
-                fields *, cover.url, genres.name, involved_companies.company.name,
-                    platforms.abbreviation, videos.video_id, screenshots.*,
-                    similar_games.*, similar_games.platforms.*, similar_games.cover.url;
+                fields aggregated_rating, name, rating, rating_count, slug,
+                    websites, involved_companies, summary,
+                    cover.url, genres.name, involved_companies.company.name,
+                    platforms.abbreviation, videos.video_id, screenshots.url,
+                    websites.url,
+                    similar_games.name, similar_games.slug, similar_games.rating,
+                    similar_games.involved_companies.company.name,
+                    similar_games.platforms.abbreviation, similar_games.cover.url;
                 where slug=\"{$slug}\";
                 ", 'text/plain'
         )->post('https://api.igdb.com/v4/games')->json();
 
+//        dump($game);
         abort_if(!$game, 404);
 
         return view('show', [
