@@ -42,6 +42,8 @@
             Powered By <a href="#" class="underline hover:text-gray-400">IGDB API</a>
         </div>
     </footer>
-    <livewire:scripts>
+    <livewire:scripts />
+    <script src="/js/app.js"></script>
+    @stack('scripts')
 </body>
 </html>

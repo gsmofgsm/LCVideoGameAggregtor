@@ -21,7 +21,8 @@ class RecentlyReviewed extends Component
             'Authorization' => 'Bearer ' . config('services.igdb.token')
         ])->withBody(
             "
-                fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, summary;
+                fields name, slug, cover.url, first_release_date, total_rating_count,
+                platforms.abbreviation, rating, summary;
                 where platforms = (48,49,130,6)
                 & (first_release_date >= {$before}
                 & first_release_date < {$current}
@@ -33,6 +34,15 @@ class RecentlyReviewed extends Component
         )->post('https://api.igdb.com/v4/games')->json();
 
         $this->recentlyReviewed = $this->formatForView($unformatted);
+
+        collect($this->recentlyReviewed)->filter(function ($game) {
+            return $game['rating'];
+        })->each(function ($game) {
+            $this->emit('reviewGameWithRatingAdded', [
+                'slug' => 'review_' . $game['slug'],
+                'rating' => $game['rating']/100
+            ]);
+        });
     }
     public function render()
     {
@@ -44,7 +54,7 @@ class RecentlyReviewed extends Component
         return collect($games)->map(function ($game) {
             return collect($game)->merge([
                 'coverImageUrl' => isset($game['cover']) ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) : '/ff7.jpg',
-                'rating' => isset($game['rating']) ? round($game['rating']) . '%' : null,
+                'rating' => isset($game['rating']) ? round($game['rating']) : null,
                 'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
             ]);
         });
