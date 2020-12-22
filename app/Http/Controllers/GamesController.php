@@ -82,7 +82,7 @@ class GamesController extends Controller
             'involved_companies' => $game['involved_companies'][0]['company']['name'],
             'memberRating' => isset($game['rating']) ? round($game['rating']) : '0',
             'criticRating' => isset($game['aggregated_rating']) ? round($game['aggregated_rating']) : '0',
-            'trailer' => 'https://youtube.com/watch/'. $game['videos'][0]['video_id'],
+            'trailer' => 'https://youtube.com/embed/'. $game['videos'][0]['video_id'],
             'screenshots' => collect($game['screenshots'])->map(function ($screenshot) {
                 return [
                     'big' => Str::replaceFirst('thumb', 'screenshot_big', $screenshot['url']),
