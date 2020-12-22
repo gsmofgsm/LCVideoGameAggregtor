@@ -120,17 +120,27 @@
             </div>
         </div> <!-- end game-details -->
 
-        <div class="images-container border-b border-gray-800 pb-12 mt-8">
+        <div
+            class="images-container border-b border-gray-800 pb-12 mt-8"
+            x-data="{ isImageModalVisible: false, image: '' }"
+        >
             <h2 class="font-semibold text-4xl">Images</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
                 @foreach($game['screenshots'] as $screenshot)
                 <div>
-                    <a href="{{ $screenshot['huge'] }}">
+                    <a
+                        href="#"
+                        @click.prevent="
+                            isImageModalVisible=true;
+                            image='{{ $screenshot['huge'] }}';
+                        "
+                    >
                         <img src="{{ $screenshot['big'] }}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
                     </a>
                 </div>
                 @endforeach
             </div>
+            <template x-if="isImageModalVisible">
             <div
                 style="background-color: rgba(0, 0, 0, .5);"
                 class="z-50 fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
@@ -140,6 +150,8 @@
                         <div class="flex justify-end pr-4 pt-2">
                             <button
                                 class="text-3xl leading-none hover:text-gray-300"
+                                @click="isImageModalVisible = false"
+                                @keydown.escape.window="isImageModalVisible = false"
                             >
                                 &times;
                             </button>
@@ -150,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            </template>
         </div> <!-- end images-container -->
 
         <div class="similar-games-container mt-8">
